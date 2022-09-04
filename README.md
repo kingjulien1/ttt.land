@@ -8,9 +8,10 @@ once registered, users can create public profile pages for their artist-personas
 
 ## tech stack 🧱
 
-- web framework [nextjs](https://nextjs.org) with incremental static site generation to preserve database reads
+- web framework [nextjs](https://nextjs.org) using typescript & incremental static site generation to preserve database reads
 - [tailwindcss](https://tailwindcss.com) for styling
-- persisting & securing data with [firebase](https://firebase.google.com)
+- persisting & securing data with [dgrpah](https://dgraph.io)
+- user authentication with [next-auth](https://next-auth.js.org)
 - testing with [jest](https://jestjs.io) and [cypress](https://www.cypress.io)
 - deploy to the edge with [vercel](https://vercel.com)
 
