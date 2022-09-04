@@ -13,21 +13,6 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
           <div>
-            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
-            <ul className="text-gray-600 dark:text-gray-400">
-              <li className="mb-4">
-                <Link href="/privacy-policy">
-                  <a className="hover:underline">Privacy Policy</a>
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy-policy">
-                  <a className="hover:underline">Terms &amp; Conditions</a>
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow me</h2>
             <ul className="text-gray-600 dark:text-gray-400">
               <li className="mb-4">
@@ -38,6 +23,21 @@ export default function Footer() {
               <li>
                 <Link href="https://mobile.twitter.com/BlaschkeJulian">
                   <a className="hover:underline">Twitter</a>
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Legal</h2>
+            <ul className="text-gray-600 dark:text-gray-400">
+              <li className="mb-4">
+                <Link href="/privacy-policy">
+                  <a className="hover:underline">Privacy Policy</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy-policy">
+                  <a className="hover:underline">Terms &amp; Conditions</a>
                 </Link>
               </li>
             </ul>

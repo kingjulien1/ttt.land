@@ -7,9 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <>
       <main className="p-4 min-h-screen">
-        <div className="pt-20">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       </main>
       <Footer />
     </>
