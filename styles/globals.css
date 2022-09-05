@@ -3,11 +3,12 @@
 @tailwind utilities;
 
 @layer base {
-  html {
+  html,
+  body {
     @apply bg-white dark:bg-black dark:text-white;
   }
 
   a {
-    @apply hover:text-fuchsia-500;
+    @apply hover:text-fuchsia-600 dark:hover:text-fuchsia-400;
   }
 }
