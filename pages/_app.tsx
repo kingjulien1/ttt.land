@@ -1,23 +1,24 @@
-import "../styles/globals.css"
-import type { AppProps } from "next/app"
-import Link from "next/link"
-import Footer from "@components/footer"
-import NavBar from "@components/navbar"
+import { createTheme, NextUIProvider, useTheme } from "@nextui-org/react"
 import { ThemeProvider } from "next-themes"
-import { NextUIProvider } from "@nextui-org/react"
+import type { AppProps } from "next/app"
+import "../styles/globals.css"
 
-function MyApp({ Component, pageProps }: AppProps) {
+const lightTheme = createTheme({ type: "light" })
+
+const darkTheme = createTheme({ type: "dark" })
+
+function TattooLand({ Component, pageProps }: AppProps) {
+  const { isDark } = useTheme()
+
   return (
-    <ThemeProvider enableSystem={true} defaultTheme="system" attribute="class">
+    <ThemeProvider defaultTheme="system" attribute="class" value={{ light: lightTheme.className, dark: darkTheme.className }}>
       <NextUIProvider>
-        <NavBar />
         <main className="p-4 min-h-screen">
           <Component {...pageProps} />
         </main>
-        <Footer />
       </NextUIProvider>
     </ThemeProvider>
   )
 }
 
-export default MyApp
+export default TattooLand
