@@ -1,5 +1,6 @@
 import { Button, Link, Navbar, Switch, Text, useTheme } from "@nextui-org/react"
 import { useTheme as useNextTheme } from "next-themes"
+import NextLink from "next/link"
 
 const collapseItems = ["Home", "Discover", "About"]
 
@@ -8,14 +9,22 @@ export default function Nav() {
     <Navbar isBordered variant="floating">
       <Navbar.Brand>
         <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
-        <Text hideIn="xs" b>
-          ttt.land
-        </Text>
+        <NextLink href="/">
+          <Link hideIn="xs" color="text" css={{ fontWeight: "$bold", fontSize: "large", paddingLeft: "$10" }}>
+            ttt.land
+          </Link>
+        </NextLink>
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="xs">
-        <Navbar.Link href="/">Home</Navbar.Link>
-        <Navbar.Link href="/discover">Discover</Navbar.Link>
-        <Navbar.Link href="/about">About</Navbar.Link>
+        <NextLink href="/">
+          <Navbar.Link>Home</Navbar.Link>
+        </NextLink>
+        <NextLink href="/discover">
+          <Navbar.Link>Discover</Navbar.Link>
+        </NextLink>
+        <NextLink href="/about">
+          <Navbar.Link>About</Navbar.Link>
+        </NextLink>
       </Navbar.Content>
       <Navbar.Content>
         <ColorModeToggle />
@@ -24,11 +33,11 @@ export default function Nav() {
         </Button>
       </Navbar.Content>
       <Navbar.Collapse>
-        {collapseItems.map((item, index) => (
+        {collapseItems.map((item) => (
           <Navbar.CollapseItem key={item} activeColor="secondary">
-            <Link color="inherit" href="#">
-              {item}
-            </Link>
+            <NextLink href={item === "Home" ? "/" : item.toLowerCase()}>
+              <Link color="inherit">{item}</Link>
+            </NextLink>
           </Navbar.CollapseItem>
         ))}
       </Navbar.Collapse>
