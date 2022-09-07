@@ -100,7 +100,8 @@ function AuthModal() {
         </Modal.Header>
         <Modal.Body>
           <Button
-            color="warning"
+            flat
+            color="success"
             onPress={() => signIn("google")}
             icon={
               <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -112,6 +113,7 @@ function AuthModal() {
             Sign in with Google
           </Button>
           <Button
+            flat
             onPress={() => signIn("twitter")}
             icon={
               <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -123,6 +125,7 @@ function AuthModal() {
             Sign in with Twitter
           </Button>
           <Button
+            flat
             color="secondary"
             onPress={() => signIn("discord")}
             icon={
