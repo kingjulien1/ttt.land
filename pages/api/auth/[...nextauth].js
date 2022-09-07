@@ -1,3 +1,4 @@
+import { DgraphAdapter } from "@next-auth/dgraph-adapter"
 import NextAuth from "next-auth"
 import DiscordProvider from "next-auth/providers/discord"
 import GoogleProvider from "next-auth/providers/google"
@@ -20,4 +21,12 @@ export default NextAuth({
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
     }),
   ],
+  adapter: DgraphAdapter({
+    endpoint: process.env.DGRAPH_GRAPHQL_ENDPOINT,
+    authToken: process.env.DGRAPH_GRAPHQL_KEY,
+
+    // you can omit the following properties if you are running an unsecure schema
+    authHeader: process.env.AUTH_HEADER, // default: "Authorization",
+    jwtSecret: process.env.SECRET,
+  }),
 })
