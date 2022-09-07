@@ -2,6 +2,7 @@ import { Avatar, Button, Dropdown, Link, Loading, Modal, Navbar, Spacer, Switch,
 import { signIn, signOut, useSession } from "next-auth/react"
 import { useTheme as useNextTheme } from "next-themes"
 import NextLink from "next/link"
+import { useRouter } from "next/router"
 import { useState } from "react"
 
 const collapseItems = ["Home", "Discover", "About"]
@@ -99,7 +100,7 @@ function AuthModal() {
         </Modal.Header>
         <Modal.Body>
           <Button
-            ghost
+            color="secondary"
             onPress={() => signIn("google")}
             icon={
               <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
@@ -119,13 +120,14 @@ function AuthModal() {
 
 function UserModal() {
   const { data: session } = useSession()
+  const { push } = useRouter()
 
   return (
     <Dropdown placement="bottom-right">
       <Dropdown.Trigger>
         <Avatar text={session.user.name} color="primary" bordered as="button" src={session?.user?.image} referrerPolicy="no-referrer" />
       </Dropdown.Trigger>
-      <Dropdown.Menu aria-label="Avatar Actions">
+      <Dropdown.Menu aria-label="Avatar Actions" onAction={(key) => (key !== "logout" ? push(key) : signOut())}>
         <Dropdown.Item key="profile" css={{ height: "$18" }}>
           <Text b color="inherit" css={{ d: "flex" }}>
             Signed in as
@@ -134,20 +136,14 @@ function UserModal() {
             {session.user.email || session.user.name}
           </Text>
         </Dropdown.Item>
-        <Dropdown.Item key="settings" withDivider>
-          <NextLink href="/settings">
-            <Link color="text">Settings</Link>
-          </NextLink>
+        <Dropdown.Item key="/settings" withDivider>
+          Settings
         </Dropdown.Item>
-        <Dropdown.Item key="dash" withDivider>
-          <NextLink href="/dash">
-            <Link color="text">Dashboard</Link>
-          </NextLink>
+        <Dropdown.Item key="/dash" withDivider>
+          Dashboard
         </Dropdown.Item>
         <Dropdown.Item key="logout" color="error" withDivider>
-          <Link color="error" onClick={() => signOut()}>
-            Sign Out
-          </Link>
+          Logout
         </Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
