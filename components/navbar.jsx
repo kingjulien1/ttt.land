@@ -9,16 +9,12 @@ const collapseItems = ["Home", "Discover", "About"]
 
 export default function Nav() {
   const { status } = useSession()
+  const [isOpen, setOpen] = useState(false)
 
   return (
     <Navbar isBordered variant="sticky">
       <Navbar.Brand>
-        <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
-        <NextLink href="/">
-          <Link hidein="xs" color="text" css={{ fontWeight: "$bold", fontSize: "large", paddingLeft: "$10" }}>
-            ttt.land
-          </Link>
-        </NextLink>
+        <Navbar.Toggle onClick={() => setOpen(true)} showIn="xs" aria-label="toggle navigation" />
       </Navbar.Brand>
       <Navbar.Content enableCursorHighlight hideIn="xs">
         <NextLink href="/">
@@ -35,11 +31,13 @@ export default function Nav() {
         <ColorModeToggle />
         {{ loading: <Loading />, unauthenticated: <AuthModal />, authenticated: <UserModal /> }[status]}
       </Navbar.Content>
-      <Navbar.Collapse>
+      <Navbar.Collapse disableBlur isOpen={isOpen}>
         {collapseItems.map((item) => (
-          <Navbar.CollapseItem key={item} activeColor="secondary">
+          <Navbar.CollapseItem key={item} activeColor="secondary" css={{ fontSize: "$4xl", fontWeight: "$bold" }}>
             <NextLink href={item === "Home" ? "/" : item.toLowerCase()}>
-              <Link color="inherit">{item}</Link>
+              <Link color="inherit" onClick={() => setOpen(false)}>
+                {item}
+              </Link>
             </NextLink>
           </Navbar.CollapseItem>
         ))}
