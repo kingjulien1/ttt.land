@@ -3,8 +3,8 @@ import Link from "next/link"
 
 export default function CookiePolicy() {
   return (
-    <Grid.Container gap={6} justify="center" css={{ my: 40, maxW: "fit-content", textAlign: "center" }}>
-      <Grid>
+    <Grid.Container gap={6} justify="center" css={{ width: "100%", my: 40, mx: 0, px: 4, textAlign: "center" }}>
+      <Grid css={{ m: 0, p: 0 }}>
         <Text
           h1
           css={{

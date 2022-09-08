@@ -4,7 +4,7 @@ import Link from "next/link"
 export default function PrivacyPolicy() {
   return (
     <Container sm css={{ textAlign: "center", p: 0 }}>
-      <Grid.Container gap={6} justify="center" css={{ marginTop: 30, marginBottom: 100 }}>
+      <Grid.Container gap={6} justify="center" css={{ width: "100%", my: 40, mx: 0, px: 4, textAlign: "center" }}>
         <Grid>
           <Text
             h1
