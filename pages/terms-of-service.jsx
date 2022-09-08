@@ -41,7 +41,7 @@ export default function TermsOfService() {
         <Grid>
           <Text h2>Disclaimer</Text>
           <Text>
-            All the materials on Tattoo LandU+0060s Website are provided &quot;as is&quot;. Tattoo Land makes no warranties, may it be expressed or implied, therefore negates all other warranties.
+            All the materials on Tattoo Land&apos;s Website are provided &quot;as is&quot;. Tattoo Land makes no warranties, may it be expressed or implied, therefore negates all other warranties.
             Furthermore, Tattoo Land does not make any representations concerning the accuracy or reliability of the use of the materials on its Website or otherwise relating to such materials or any
             sites linked to this Website.
           </Text>
@@ -49,7 +49,7 @@ export default function TermsOfService() {
         <Grid>
           <Text h2>Limitations</Text>
           <Text>
-            Tattoo Land or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on Tattoo LandU+0060s Website, even if Tattoo Land
+            Tattoo Land or its suppliers will not be hold accountable for any damages that will arise with the use or inability to use the materials on Tattoo Land&apos;s Website, even if Tattoo Land
             or an authorize representative of this Website has been notified, orally or written, of the possibility of such damage. Some jurisdiction does not allow limitations on implied warranties
             or limitations of liability for incidental damages, these limitations may not apply to you.
           </Text>
@@ -57,7 +57,7 @@ export default function TermsOfService() {
         <Grid>
           <Text h2>Revisions and Errata</Text>
           <Text>
-            The materials appearing on Tattoo LandU+0060s Website may include technical, typographical, or photographic errors. Tattoo Land will not promise that any of the materials in this Website
+            The materials appearing on Tattoo Land&apos;s Website may include technical, typographical, or photographic errors. Tattoo Land will not promise that any of the materials in this Website
             are accurate, complete, or current. Tattoo Land may change the materials contained on its Website at any time without notice. Tattoo Land does not make any commitment to update the
             materials.
           </Text>
@@ -66,7 +66,7 @@ export default function TermsOfService() {
           <Text h2>Links</Text>
           <Text>
             Tattoo Land has not reviewed all of the sites linked to its Website and is not responsible for the contents of any such linked site. The presence of any link does not imply endorsement by
-            Tattoo Land of the site. The use of any linked website is at the userU+0060s own risk.
+            Tattoo Land of the site. The use of any linked website is at the user&apos;s own risk.
           </Text>
         </Grid>
         <Grid>

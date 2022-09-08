@@ -66,7 +66,7 @@ export default function CookiePolicy() {
               <Link href="https://support.microsoft.com/en-us/topic/how-to-delete-cookie-files-in-internet-explorer-bca9446f-d873-78de-77ba-d42645fa52fc">Internet Explorer</Link>
             </li>
           </ul>
-          <Text>If you are using any other web browser, please visit your browser's official support documents.</Text>
+          <Text>If you are using any other web browser, please visit your browser&apos;s official support documents.</Text>
         </Grid>
       </Grid.Container>
     </Container>

@@ -67,7 +67,7 @@ export default function PrivacyPolicy() {
           <Text>
             Like any other website, Tattoo Land uses &apos;cookies&apos;. These cookies are used to store information including visitors&apos; preferences, and the pages on the website that the
             visitor accessed or visited. The information is used to optimize the users&apos; experience by customizing our web page content based on visitors&apos; browser type and/or other
-            information.
+            information. Please see our <Link href="/cookie-policy">Cookie Policy</Link> for more information.
           </Text>
         </Grid>
         <Grid>
@@ -78,10 +78,7 @@ export default function PrivacyPolicy() {
             which are sent directly to users&apos; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising
             campaigns and/or to personalize the advertising content that you see on websites that you visit.
           </Text>
-          <Text>
-            Note that Tattoo Land has no access to or control over these cookies that are used by third-party advertisers. Please see our <Link href="/cookie-policy">Cookie Policy</Link> for more
-            information.
-          </Text>
+          <Text>Note that Tattoo Land has no access to or control over these cookies that are used by third-party advertisers. </Text>
         </Grid>
         <Grid>
           <Text h2>Third Party Privacy Policies</Text>
@@ -105,16 +102,16 @@ export default function PrivacyPolicy() {
         <Grid>
           <Text h2>GDPR Data Protection Rights</Text>
           <Text>We would like to make sure you are fully aware of all of your data protection rights. Every user is entitled to the following:</Text>
-          <Text>The right to access U+2013 You have the right to request copies of your personal data. We may charge you a small fee for this service.</Text>
+          <Text>The right to access – You have the right to request copies of your personal data. We may charge you a small fee for this service.</Text>
           <Text>
-            The right to rectification U+2013 You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the
-            information you believe is incomplete.
+            The right to rectification – You have the right to request that we correct any information you believe is inaccurate. You also have the right to request that we complete the information
+            you believe is incomplete.
           </Text>
-          <Text>The right to erasure U+2013 You have the right to request that we erase your personal data, under certain conditions.</Text>
-          <Text>The right to restrict processing U+2013 You have the right to request that we restrict the processing of your personal data, under certain conditions.</Text>
-          <Text>The right to object to processing U+2013 You have the right to object to our processing of your personal data, under certain conditions.</Text>
+          <Text>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</Text>
+          <Text>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</Text>
+          <Text>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</Text>
           <Text>
-            The right to data portability U+2013 You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
+            The right to data portability – You have the right to request that we transfer the data that we have collected to another organization, or directly to you, under certain conditions.
           </Text>
           <Text>If you make a request, we have one month to respond to you. If you would like to exercise any of these rights, please contact us.</Text>
         </Grid>
