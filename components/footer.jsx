@@ -3,7 +3,7 @@ import NextLink from "next/link"
 
 export default function Footer() {
   return (
-    <Card variant="bordered" css={{ background: "transparent", padding: 20, margin: 10, borderBottom: "none", borderRight: "none", borderLeft: "none", borderRadius: "unset" }}>
+    <Card variant="bordered" css={{ background: "transparent", py: 20, my: 10, borderBottom: "none", borderRight: "none", borderLeft: "none", borderRadius: "unset" }}>
       <Row css={{ mt: 20, display: "flex", textAlign: "-webkit-center", flexDirection: "column-reverse", "@xs": { flexDirection: "row", justifyContent: "space-around" } }}>
         <Text size="$sm" css={{ mt: 30, "@xs": { mt: 0 }, justifySelf: "start", textAlign: "start" }}>
           Created with ❤️ by{" "}
