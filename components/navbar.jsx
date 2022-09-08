@@ -11,7 +11,7 @@ export default function Nav() {
   const { status } = useSession()
 
   return (
-    <Navbar isBordered variant="floating">
+    <Navbar isBordered variant="sticky">
       <Navbar.Brand>
         <Navbar.Toggle showIn="xs" aria-label="toggle navigation" />
         <NextLink href="/">
