@@ -78,7 +78,10 @@ export default function PrivacyPolicy() {
             which are sent directly to users&apos; browser. They automatically receive your IP address when this occurs. These technologies are used to measure the effectiveness of their advertising
             campaigns and/or to personalize the advertising content that you see on websites that you visit.
           </Text>
-          <Text>Note that Tattoo Land has no access to or control over these cookies that are used by third-party advertisers.</Text>
+          <Text>
+            Note that Tattoo Land has no access to or control over these cookies that are used by third-party advertisers. Please see our <Link href="/cookie-policy">Cookie Policy</Link> for more
+            information.
+          </Text>
         </Grid>
         <Grid>
           <Text h2>Third Party Privacy Policies</Text>
