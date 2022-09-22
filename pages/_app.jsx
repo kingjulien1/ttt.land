@@ -1,4 +1,5 @@
 import Footer from "@/components/footer"
+import Nav from "@/components/navbar"
 import { createTheme, Image, NextUIProvider } from "@nextui-org/react"
 import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from "next-themes"
@@ -15,6 +16,7 @@ function TattooLand({ Component, pageProps }) {
           <main style={{ minHeight: "100vh" }}>
             <Image src="/gradient-left-dark.svg" alt="gradient" css={{ position: "fixed", left: -200, bottom: -200, pointerEvents: "none" }} />
             <Image src="/gradient-right-dark.svg" alt="gradient" css={{ position: "fixed", right: -200, top: -200, rotate: "180deg", pointerEvents: "none" }} />
+            <Nav />
             <Component {...pageProps} />
           </main>
           <Footer />
