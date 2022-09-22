@@ -1,4 +1,4 @@
-# ttt.land
+# Trampstamp Network 🧞‍♀️
 
 network for tatoo artists to announce travel dates & residencies.
 
@@ -6,27 +6,30 @@ network for tatoo artists to announce travel dates & residencies.
 
 once registered, users can create public profile pages for their artist-personas & shops by connecting their instagram. All relevant instagram-data like name, profile picture & media, as well as connected shops/artists & travel dates, aka guest spots, will make up profiles.
 
-## tech stack 🧱
+## getting started 🚀
 
-- web framework [nextjs](https://nextjs.org) using typescript & incremental static site generation to preserve database reads
-- [tailwindcss](https://tailwindcss.com) for styling
-- persisting & securing data with [dgrpah](https://dgraph.io)
-- user authentication with [next-auth](https://next-auth.js.org)
-- testing with [jest](https://jestjs.io) and [cypress](https://www.cypress.io)
-- deploy to the edge with [vercel](https://vercel.com)
+clone this repository and navigate into the directory.
 
-## routes 📚
+```bash
+# install dependencies
+yarn
 
-specification of functionality and contents provided by individual routes.
+# start local development server
+yarn dev
+```
 
-### landing `/`
+## contributing 🎳
 
-few sections to promote & introduce the service + call to action link to sign up.
+pull requests are the best way to propose changes to the codebase (we use github flow). we actively welcome your pull requests:
 
-### dashboard `/dash`
+1. fork the repo and create your branch from master.
+2. if you've added code that should be tested, add tests.
+4. ensure the test suite passes.
+5. make sure your code lints.
+6. issue a pull request.
+7. request a review from at least one other developer
+8. with permission of the repository owner you may merge your pull request
 
-where users manage public pages (representing either artist or shop) by authenticating & connecting their instagram profiles to access data like name, profile picture & media.
+when you submit code changes, your submissions are understood to be under the same MIT License that covers the project. Feel free to contact the maintainers if that's a concern.
 
-### profiles `/${name}`
-
-public pages representing either a shop or an artist profile. lists all linked shops/artists, travel dates & instagram media.
+report bugs using [github issues](https://github.com/kingjulien1/trampstamp.network/issues/new). swe use issues to track public bugs. report a bug by opening a new issue. Please write bug reports with detail, background, and sample code.
