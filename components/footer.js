@@ -11,9 +11,9 @@ export default function Footer() {
     <Card as="footer" css={{ background: "transparent", width: "100%", mx: 0, px: 20, py: 20, my: 10 }}>
       <Row css={{ my: 8, display: "flex", flexDirection: "column-reverse", alignItems: "center", rowGap: 10, "@xs": { flexDirection: "row", justifyContent: "space-around", rowGap: 0 } }}>
         <Creator />
-        <FooterLink href="/privacy-policy" title="Privacy Policy" />
-        <FooterLink href="/terms-of-service" title="Terms of Service" />
-        <FooterLink href="/cookie-policy" title="Cookie Policy" />
+        <FooterLink href="/legal/privacy-policy" title="Privacy Policy" />
+        <FooterLink href="/legal/terms-of-service" title="Terms of Service" />
+        <FooterLink href="/legal/cookie-policy" title="Cookie Policy" />
         <FooterLink href="https://github.com/kingjulien1/ttt.land" title="Repository" isExternal />
         <FooterLink href="https://github.com/kingjulien1/ttt.land/discussions/new?category=feedback" title="Feedback" isExternal />
       </Row>
@@ -31,7 +31,7 @@ export default function Footer() {
  */
 function FooterLink({ href, title, isExternal = false }) {
   const Component = isExternal ? NextUiLink : Link
-  return <Component color="text" css={{ fontSize: "$sm", color: "$gray800" }} href={href} children={title} />
+  return <Component color="text" css={{ fontSize: "$sm" }} href={href} children={title} />
 }
 
 /**
