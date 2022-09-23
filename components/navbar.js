@@ -2,9 +2,9 @@ import { Loading, Navbar, Switch, useTheme } from "@nextui-org/react"
 import { useSession } from "next-auth/react"
 import { useTheme as useNextTheme } from "next-themes"
 import { FaMoon, FaSun } from "react-icons/fa"
-import Link from "./Link"
-import Authentication from "./modals/Authentication"
-import User from "./modals/User"
+import Link from "./link"
+import Authentication from "./modals/authentication"
+import User from "./modals/user"
 
 const links = { Home: "/", Discover: "/discover", About: "/about" }
 

@@ -1,5 +1,5 @@
 import { Card, Link as NextUiLink, Row, Text } from "@nextui-org/react"
-import Link from "./Link"
+import Link from "./link"
 
 /**
  * section at the bottom end of the base layout with important links
@@ -41,7 +41,7 @@ function FooterLink({ href, title, isExternal = false }) {
  */
 function Creator() {
   return (
-    <Text size="$sm" css={{ mt: 30, "@xs": { mt: 0 }, justifySelf: "start", textAlign: "start" }}>
+    <Text size="$xs" css={{ mt: 30, "@xs": { mt: 0 }, justifySelf: "start", textAlign: "start" }}>
       Created with ❤️ by <NextUiLink color="default" href="https://github.com/kingjulien1" css={{ display: "inline" }} children="kingjulien1" />
     </Text>
   )
