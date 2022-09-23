@@ -14,8 +14,8 @@ export default function Footer() {
         <FooterLink href="/legal/privacy-policy" title="Privacy Policy" />
         <FooterLink href="/legal/terms-of-service" title="Terms of Service" />
         <FooterLink href="/legal/cookie-policy" title="Cookie Policy" />
-        <FooterLink href="https://github.com/kingjulien1/ttt.land" title="Repository" isExternal />
-        <FooterLink href="https://github.com/kingjulien1/ttt.land/discussions/new?category=feedback" title="Feedback" isExternal />
+        <FooterLink href="https://github.com/kingjulien1/trampstamp.network" title="Repository" isExternal />
+        <FooterLink href="https://github.com/kingjulien1/trampstamp.network/discussions/new?category=feedback" title="Feedback" isExternal />
       </Row>
     </Card>
   )
@@ -42,7 +42,7 @@ function FooterLink({ href, title, isExternal = false }) {
 function Creator() {
   return (
     <Text size="$xs" css={{ mt: 30, "@xs": { mt: 0 }, justifySelf: "start", textAlign: "start" }}>
-      Created with ❤️ by <NextUiLink color="default" href="https://github.com/kingjulien1" css={{ display: "inline" }} children="kingjulien1" />
+      made with ❤️ by <NextUiLink color="default" href="https://github.com/kingjulien1" css={{ display: "inline", fontStyle: "italic" }} children="kingjulien1" />
     </Text>
   )
 }
