@@ -11,7 +11,6 @@ const lightTheme = createTheme({ type: "light", theme: { colors } })
 const darkTheme = createTheme({ type: "dark", theme: { colors } })
 
 const globalStyles = globalCss({
-  body: { margin: 0 },
   ul: { listStyleType: "circle" },
   "h1, h2, h3, h4": { fontWeight: "$light" },
 })
