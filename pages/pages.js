@@ -21,7 +21,7 @@ export default function Dashboard() {
         <Spacer y={4} />
         {[1, 2, 3, 4].map((v) => (
           <Row key={v} align="start" justify="center" css={{ ml: -20, mt: "$10" }}>
-            <Avatar src={data?.user?.image} text={data?.user?.name} color="white" bordered referrerPolicy="no-referrer" />
+            <Avatar src="https://api.tattooswizard.com/images/CB_G-QGja4K" text={data?.user?.name} color="white" bordered referrerPolicy="no-referrer" />
             <Col css={{ pl: 24, mt: 6, gap: "$14" }}>
               <Link href="/">
                 <Text h3 children={`@${data?.user?.name}`} color="primary" css={{ fontSize: "$md", fontStyle: "italic" }} />
