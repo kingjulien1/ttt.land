@@ -2,9 +2,9 @@ import { Loading, Navbar, Switch, useTheme } from "@nextui-org/react"
 import { useSession } from "next-auth/react"
 import { useTheme as useNextTheme } from "next-themes"
 import { FaMoon, FaSun } from "react-icons/fa"
-import Link from "./Link"
-import Authentication from "./modals/Authentication"
-import User from "./modals/User"
+import Link from "./link"
+import Authentication from "./modals/authentication"
+import User from "./modals/user"
 
 const links = { Home: "/", Discover: "/discover", About: "/about" }
 
@@ -15,7 +15,7 @@ const links = { Home: "/", Discover: "/discover", About: "/about" }
  */
 export default function Nav() {
   return (
-    <Navbar isBordered variant="sticky" isCompact>
+    <Navbar isBordered isCompact variant="sticky">
       <NavBarBrand />
       <NavBarContent />
       <NavBarResponsiveContent />
@@ -52,7 +52,7 @@ function NavBarContent() {
 
   return (
     <>
-      <Navbar.Content enableCursorHighlight hideIn="xs">
+      <Navbar.Content hideIn="xs">
         {Object.keys(links).map((title) => (
           <Link Component={Navbar.Link} key={title} href={links[title]} children={title} />
         ))}
