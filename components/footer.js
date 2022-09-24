@@ -8,7 +8,7 @@ import Link from "./link"
  */
 export default function Footer() {
   return (
-    <Card as="footer" css={{ background: "transparent", width: "100%", p: 20, my: 10, borderRadius: 0 }}>
+    <Card as="footer" css={{ background: "$blue300", width: "100%", p: 20, mt: 10, borderRadius: 0 }}>
       <Row css={{ my: 8, display: "flex", flexDirection: "column-reverse", alignItems: "center", rowGap: 10, "@xs": { flexDirection: "row", justifyContent: "space-around", rowGap: 0 } }}>
         <Creator />
         <FooterLink href="/legal/privacy-policy" title="Privacy Policy" />

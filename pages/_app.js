@@ -4,7 +4,7 @@ import { createTheme, globalCss, NextUIProvider } from "@nextui-org/react"
 import { SessionProvider } from "next-auth/react"
 import { ThemeProvider } from "next-themes"
 
-const colors = { primary: "#17B890" }
+const colors = {}
 
 const lightTheme = createTheme({ type: "light", theme: { colors } })
 

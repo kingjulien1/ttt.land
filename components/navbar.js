@@ -15,7 +15,7 @@ const links = { Home: "/", Discover: "/discover", About: "/about" }
  */
 export default function Nav() {
   return (
-    <Navbar isBordered variant="sticky" isCompact>
+    <Navbar isBordered isCompact variant="sticky">
       <NavBarBrand />
       <NavBarContent />
       <NavBarResponsiveContent />
@@ -52,7 +52,7 @@ function NavBarContent() {
 
   return (
     <>
-      <Navbar.Content enableCursorHighlight hideIn="xs">
+      <Navbar.Content hideIn="xs">
         {Object.keys(links).map((title) => (
           <Link Component={Navbar.Link} key={title} href={links[title]} children={title} />
         ))}
