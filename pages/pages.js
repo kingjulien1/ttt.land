@@ -1,58 +1,110 @@
-import { Button, Card, Col, Container, Grid, Text, User } from "@nextui-org/react"
+import { Avatar, Button, Card, Col, Container, Grid, Row, Spacer, Text, User } from "@nextui-org/react"
 import { useSession } from "next-auth/react"
+import { FaCouch } from "react-icons/fa"
+import Link from "../components/link"
 
 export default function Dashboard() {
   const { data } = useSession()
   return (
-    <>
-      <Button
-        size="xl"
-        auto
-        css={{ position: "fixed", bottom: 50, right: 50, width: "unset", zIndex: "$10" }}
-        shadow
-        icon={
-          <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" style={{ width: 30, height: 30 }}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-        }
-      ></Button>
-      <Container md css={{ mt: 30, textAlign: "center" }}>
-        <Text h1>Public Pages</Text>
-        <Text size="$sm">Hi {data?.user.name}, glad you&apos;re back. This is the place where you can manage public pages for your profile & shops.</Text>
-        <Grid.Container gap={3} css={{ width: "100%", my: 50, mx: 0, px: 4 }}>
-          {[1, 2, 3, 4, 5, 6, 7].map((i) => (
-            <Page key={i} />
-          ))}
-        </Grid.Container>
-      </Container>
-    </>
-  )
-}
-
-function Page() {
-  return (
-    <Grid sm={4} xs={12}>
-      <Card isHoverable isPressable variant="bordered">
-        <Card.Header css={{ textAlign: "start" }}>
-          <Col css={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-            <User src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQADQHjtFi-u-Qil-I5bkO1Su_PODg9GNrf1w&usqp=CAU" name="handpokeprincess" description="Tattoo Artist" />
-            <Button
-              auto
-              flat
-              icon={
-                <svg fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" style={{ width: 30, height: 30 }}>
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M4.5 12a7.5 7.5 0 0015 0m-15 0a7.5 7.5 0 1115 0m-15 0H3m16.5 0H21m-1.5 0H12m-8.457 3.077l1.41-.513m14.095-5.13l1.41-.513M5.106 17.785l1.15-.964m11.49-9.642l1.149-.964M7.501 19.795l.75-1.3m7.5-12.99l.75-1.3m-6.063 16.658l.26-1.477m2.605-14.772l.26-1.477m0 17.726l-.26-1.477M10.698 4.614l-.26-1.477M16.5 19.794l-.75-1.299M7.5 4.205L12 12m6.894 5.785l-1.149-.964M6.256 7.178l-1.15-.964m15.352 8.864l-1.41-.513M4.954 9.435l-1.41-.514M12.002 12l-3.75 6.495"
-                  />
-                </svg>
-              }
+    <Container xs css={{ my: "$14", pl: "$16" }}>
+      <Col css={{ mb: "$20", bg: "$accents0", borderRadius: "$2xl" }}>
+        <Spacer y={1} />
+        <Col css={{ borderLeft: "2px solid", borderLeftColor: "$accents7" }}>
+          <Row align="start" css={{ ml: -30, mt: -4 }}>
+            <Avatar
+              src="https://editorial01.shutterstock.com/wm-preview-1500/9469410j/fa8e0c72/Shutterstock_9469410j.jpg"
+              text={data?.user?.name}
+              color="white"
+              bordered
+              referrerPolicy="no-referrer"
+              size="xl"
+              css={{ borderWidth: "30px", borderColor: "$accents3" }}
             />
-          </Col>
-        </Card.Header>
-        <Card.Image src="https://i.pinimg.com/originals/a3/61/b0/a361b0fca67cc73e314866d0bc78ec57.jpg" objectFit="cover" width="100%" height={250} alt="latest instagram post" />
-      </Card>
-    </Grid>
+            <Col css={{ pl: 14 }}>
+              <Text h1 children="Rafael Delalande" css={{ fontSize: "$4xl", fontStyle: "italic" }} />
+              <Row justify="space-between" css={{ gap: "$4", mb: "$6", flexDirection: "column", "@xs": { flexDirection: "row", gap: "$18" } }}>
+                <Row css={{ width: "fit-content" }}>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8 }}>
+                    Tattoo Artist
+                  </Text>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8 }}>
+                    - He/Him
+                  </Text>
+                </Row>
+                <Text size="$sm" weight="semibold" css={{ mt: -8, fontStyle: "italic" }}>
+                  🇨🇦 Toronto, Canada
+                </Text>
+              </Row>
+              <Text size="$sm" color="$accents8" css={{ mt: -10 }}>
+                hi, how&apos;s it going? this is the place where you can create, update & delete your public profiles for your artist persona & tattoo shops, as well as manage your guest spots. hi,
+                how&apos;s it going? this is the place where you can create, update & delete your public profiles for your artist persona.
+              </Text>
+            </Col>
+          </Row>
+          <Row id="shops" align="start" justify="center" css={{ ml: -20, pt: "$20" }}>
+            <Row align="start" justify="center">
+              <Avatar icon={<FaCouch />} css={{ bg: "$accents0", border: "2px solid", borderColor: "$accents7" }} text={data?.user?.name} color="white" bordered referrerPolicy="no-referrer" />
+              <Col justify="space-between" css={{ pl: 24, gap: "$4", mb: "$6", flexDirection: "column", "@xs": { flexDirection: "row", gap: "$18" } }}>
+                <Link href="#shops">
+                  <Text h3 children={`Tattoo Shops`} css={{ fontSize: "$md", fontWeight: "$normal" }} />
+                </Link>
+                <Text size="$sm" color="$accents8" css={{ mt: -8, fontSize: "$xs" }}>
+                  Check out Shops this Artist tattoo&apos;s @!
+                </Text>
+              </Col>
+            </Row>
+          </Row>
+          {[1, 2, 3, 4].map((v) => (
+            <Row key={v} align="center" justify="center" css={{ ml: -20, mt: "$10" }}>
+              <Avatar src="https://api.tattooswizard.com/images/CB_G-QGja4K" text={data?.user?.name} color="white" bordered referrerPolicy="no-referrer" />
+              <Col css={{ pl: 24, mt: 6, gap: "$14" }}>
+                <Link href={`/shop`}>
+                  <Text h3 children="@blackwork.studio" color="primary" css={{ fontSize: "$md", fontStyle: "italic" }} />
+                </Link>
+                <Row justify="space-between" css={{ gap: "$4", flexDirection: "column", "@xs": { flexDirection: "row", gap: "$18" } }}>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8 }}>
+                    Owner
+                  </Text>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8, fontStyle: "italic" }}>
+                    🇬🇧 London, UK
+                  </Text>
+                </Row>
+                <Text size="$sm" color="$accents8" css={{ mt: 4 }}>
+                  tattoo shop based in london. specialising in blackwork, antistyle & ignorant-trash style tattoos. Hit our artists up to schedule an appointment.
+                </Text>
+              </Col>
+            </Row>
+          ))}
+          <Spacer y={4} />
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((v) => (
+            <Row key={v} align="start" justify="center" css={{ ml: -20, mt: "$10" }}>
+              <Avatar
+                src="https://www.mytattoo.com/fileadmin/user_upload/MyTattoo.com-Most-Wanted-Tattoo-Studio-Berlin.jpg"
+                text={data?.user?.name}
+                color="white"
+                bordered
+                referrerPolicy="no-referrer"
+              />
+              <Col css={{ pl: 24, mt: 6, gap: "$14" }}>
+                <Link href="/">
+                  <Text h3 children="@hyperhumanttt" color="primary" css={{ fontSize: "$md", fontStyle: "italic" }} />
+                </Link>
+                <Row justify="space-between" css={{ gap: "$4", flexDirection: "column", "@xs": { flexDirection: "row", gap: "$18" } }}>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8 }}>
+                    June 21 - 29, 2022
+                  </Text>
+                  <Text size="$sm" weight="semibold" css={{ mt: -8, fontStyle: "italic" }}>
+                    🇺🇦 Kyiev, Ukraine
+                  </Text>
+                </Row>
+                <Text size="$sm" color="$accents8" css={{ mt: 4 }}>
+                  tattoo shop based in vienna. specialising in bla, antistyle & ignorant-trash style tattoos. Hit our artists up to schedule an appointment.
+                </Text>
+              </Col>
+            </Row>
+          ))}
+        </Col>
+      </Col>
+    </Container>
   )
 }

@@ -22,11 +22,11 @@ export default function TrampStampNetwork({ Component, pageProps }) {
     <ThemeProvider defaultTheme="system" attribute="class" value={{ light: lightTheme.className, dark: darkTheme.className }}>
       <NextUIProvider>
         <SessionProvider>
+          <Nav />
           <main style={{ minHeight: "100vh" }}>
-            <Nav />
             <Component {...pageProps} />
+            <Footer />
           </main>
-          <Footer />
         </SessionProvider>
       </NextUIProvider>
     </ThemeProvider>
