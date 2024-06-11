@@ -1,0 +1,597 @@
+#######################
+# Input Schema
+#######################
+
+type Profile {
+	name: String! @id @search(by: [hash])
+	access_token: String!
+	expires_in: Int64!
+	fullname: String
+	bio: String
+	url: String
+	recidence: String
+}
+
+type Recidency {
+	recidency(filter: ProfileFilter): Profile!
+	recident(filter: ProfileFilter): Profile!
+	type: String!
+	since: DateTime!
+}
+
+type GuestSpot {
+	recidency(filter: ProfileFilter): Profile!
+	recident(filter: ProfileFilter): Profile!
+	from: DateTime!
+	to: DateTime!
+	status: String
+}
+
+#######################
+# Extended Definitions
+#######################
+
+"""
+The Int64 scalar type represents a signed 64‐bit numeric non‐fractional value.
+Int64 can represent values in range [-(2^63),(2^63 - 1)].
+"""
+scalar Int64
+
+"""
+The DateTime scalar type represents date and time as a string in RFC3339 format.
+For example: "1985-04-12T23:20:50.52Z" represents 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC.
+"""
+scalar DateTime
+
+input IntRange{
+	min: Int!
+	max: Int!
+}
+
+input FloatRange{
+	min: Float!
+	max: Float!
+}
+
+input Int64Range{
+	min: Int64!
+	max: Int64!
+}
+
+input DateTimeRange{
+	min: DateTime!
+	max: DateTime!
+}
+
+input StringRange{
+	min: String!
+	max: String!
+}
+
+enum DgraphIndex {
+	int
+	int64
+	float
+	bool
+	hash
+	exact
+	term
+	fulltext
+	trigram
+	regexp
+	year
+	month
+	day
+	hour
+	geo
+}
+
+input AuthRule {
+	and: [AuthRule]
+	or: [AuthRule]
+	not: AuthRule
+	rule: String
+}
+
+enum HTTPMethod {
+	GET
+	POST
+	PUT
+	PATCH
+	DELETE
+}
+
+enum Mode {
+	BATCH
+	SINGLE
+}
+
+input CustomHTTP {
+	url: String!
+	method: HTTPMethod!
+	body: String
+	graphql: String
+	mode: Mode
+	forwardHeaders: [String!]
+	secretHeaders: [String!]
+	introspectionHeaders: [String!]
+	skipIntrospection: Boolean
+}
+
+type Point {
+	longitude: Float!
+	latitude: Float!
+}
+
+input PointRef {
+	longitude: Float!
+	latitude: Float!
+}
+
+input NearFilter {
+	distance: Float!
+	coordinate: PointRef!
+}
+
+input PointGeoFilter {
+	near: NearFilter
+	within: WithinFilter
+}
+
+type PointList {
+	points: [Point!]!
+}
+
+input PointListRef {
+	points: [PointRef!]!
+}
+
+type Polygon {
+	coordinates: [PointList!]!
+}
+
+input PolygonRef {
+	coordinates: [PointListRef!]!
+}
+
+type MultiPolygon {
+	polygons: [Polygon!]!
+}
+
+input MultiPolygonRef {
+	polygons: [PolygonRef!]!
+}
+
+input WithinFilter {
+	polygon: PolygonRef!
+}
+
+input ContainsFilter {
+	point: PointRef
+	polygon: PolygonRef
+}
+
+input IntersectsFilter {
+	polygon: PolygonRef
+	multiPolygon: MultiPolygonRef
+}
+
+input PolygonGeoFilter {
+	near: NearFilter
+	within: WithinFilter
+	contains: ContainsFilter
+	intersects: IntersectsFilter
+}
+
+input GenerateQueryParams {
+	get: Boolean
+	query: Boolean
+	password: Boolean
+	aggregate: Boolean
+}
+
+input GenerateMutationParams {
+	add: Boolean
+	update: Boolean
+	delete: Boolean
+}
+
+directive @hasInverse(field: String!) on FIELD_DEFINITION
+directive @search(by: [DgraphIndex!]) on FIELD_DEFINITION
+directive @dgraph(type: String, pred: String) on OBJECT | INTERFACE | FIELD_DEFINITION
+directive @id on FIELD_DEFINITION
+directive @withSubscription on OBJECT | INTERFACE | FIELD_DEFINITION
+directive @secret(field: String!, pred: String) on OBJECT | INTERFACE
+directive @auth(
+	password: AuthRule
+	query: AuthRule,
+	add: AuthRule,
+	update: AuthRule,
+	delete: AuthRule) on OBJECT | INTERFACE
+directive @custom(http: CustomHTTP, dql: String) on FIELD_DEFINITION
+directive @remote on OBJECT | INTERFACE | UNION | INPUT_OBJECT | ENUM
+directive @remoteResponse(name: String) on FIELD_DEFINITION
+directive @cascade(fields: [String]) on FIELD
+directive @lambda on FIELD_DEFINITION
+directive @lambdaOnMutate(add: Boolean, update: Boolean, delete: Boolean) on OBJECT | INTERFACE
+directive @cacheControl(maxAge: Int!) on QUERY
+directive @generate(
+	query: GenerateQueryParams,
+	mutation: GenerateMutationParams,
+	subscription: Boolean) on OBJECT | INTERFACE
+
+input IntFilter {
+	eq: Int
+	in: [Int]
+	le: Int
+	lt: Int
+	ge: Int
+	gt: Int
+	between: IntRange
+}
+
+input Int64Filter {
+	eq: Int64
+	in: [Int64]
+	le: Int64
+	lt: Int64
+	ge: Int64
+	gt: Int64
+	between: Int64Range
+}
+
+input FloatFilter {
+	eq: Float
+	in: [Float]
+	le: Float
+	lt: Float
+	ge: Float
+	gt: Float
+	between: FloatRange
+}
+
+input DateTimeFilter {
+	eq: DateTime
+	in: [DateTime]
+	le: DateTime
+	lt: DateTime
+	ge: DateTime
+	gt: DateTime
+	between: DateTimeRange
+}
+
+input StringTermFilter {
+	allofterms: String
+	anyofterms: String
+}
+
+input StringRegExpFilter {
+	regexp: String
+}
+
+input StringFullTextFilter {
+	alloftext: String
+	anyoftext: String
+}
+
+input StringExactFilter {
+	eq: String
+	in: [String]
+	le: String
+	lt: String
+	ge: String
+	gt: String
+	between: StringRange
+}
+
+input StringHashFilter {
+	eq: String
+	in: [String]
+}
+
+#######################
+# Generated Types
+#######################
+
+type AddGuestSpotPayload {
+	guestSpot(filter: GuestSpotFilter, order: GuestSpotOrder, first: Int, offset: Int): [GuestSpot]
+	numUids: Int
+}
+
+type AddProfilePayload {
+	profile(filter: ProfileFilter, order: ProfileOrder, first: Int, offset: Int): [Profile]
+	numUids: Int
+}
+
+type AddRecidencyPayload {
+	recidency(filter: RecidencyFilter, order: RecidencyOrder, first: Int, offset: Int): [Recidency]
+	numUids: Int
+}
+
+type DeleteGuestSpotPayload {
+	guestSpot(filter: GuestSpotFilter, order: GuestSpotOrder, first: Int, offset: Int): [GuestSpot]
+	msg: String
+	numUids: Int
+}
+
+type DeleteProfilePayload {
+	profile(filter: ProfileFilter, order: ProfileOrder, first: Int, offset: Int): [Profile]
+	msg: String
+	numUids: Int
+}
+
+type DeleteRecidencyPayload {
+	recidency(filter: RecidencyFilter, order: RecidencyOrder, first: Int, offset: Int): [Recidency]
+	msg: String
+	numUids: Int
+}
+
+type GuestSpotAggregateResult {
+	count: Int
+	fromMin: DateTime
+	fromMax: DateTime
+	toMin: DateTime
+	toMax: DateTime
+	statusMin: String
+	statusMax: String
+}
+
+type ProfileAggregateResult {
+	count: Int
+	nameMin: String
+	nameMax: String
+	access_tokenMin: String
+	access_tokenMax: String
+	expires_inMin: Int64
+	expires_inMax: Int64
+	expires_inSum: Int64
+	expires_inAvg: Float
+	fullnameMin: String
+	fullnameMax: String
+	bioMin: String
+	bioMax: String
+	urlMin: String
+	urlMax: String
+	recidenceMin: String
+	recidenceMax: String
+}
+
+type RecidencyAggregateResult {
+	count: Int
+	typeMin: String
+	typeMax: String
+	sinceMin: DateTime
+	sinceMax: DateTime
+}
+
+type UpdateGuestSpotPayload {
+	guestSpot(filter: GuestSpotFilter, order: GuestSpotOrder, first: Int, offset: Int): [GuestSpot]
+	numUids: Int
+}
+
+type UpdateProfilePayload {
+	profile(filter: ProfileFilter, order: ProfileOrder, first: Int, offset: Int): [Profile]
+	numUids: Int
+}
+
+type UpdateRecidencyPayload {
+	recidency(filter: RecidencyFilter, order: RecidencyOrder, first: Int, offset: Int): [Recidency]
+	numUids: Int
+}
+
+#######################
+# Generated Enums
+#######################
+
+enum GuestSpotHasFilter {
+	recidency
+	recident
+	from
+	to
+	status
+}
+
+enum GuestSpotOrderable {
+	from
+	to
+	status
+}
+
+enum ProfileHasFilter {
+	name
+	access_token
+	expires_in
+	fullname
+	bio
+	url
+	recidence
+}
+
+enum ProfileOrderable {
+	name
+	access_token
+	expires_in
+	fullname
+	bio
+	url
+	recidence
+}
+
+enum RecidencyHasFilter {
+	recidency
+	recident
+	type
+	since
+}
+
+enum RecidencyOrderable {
+	type
+	since
+}
+
+#######################
+# Generated Inputs
+#######################
+
+input AddGuestSpotInput {
+	recidency: ProfileRef!
+	recident: ProfileRef!
+	from: DateTime!
+	to: DateTime!
+	status: String
+}
+
+input AddProfileInput {
+	name: String!
+	access_token: String!
+	expires_in: Int64!
+	fullname: String
+	bio: String
+	url: String
+	recidence: String
+}
+
+input AddRecidencyInput {
+	recidency: ProfileRef!
+	recident: ProfileRef!
+	type: String!
+	since: DateTime!
+}
+
+input GuestSpotFilter {
+	has: [GuestSpotHasFilter]
+	and: [GuestSpotFilter]
+	or: [GuestSpotFilter]
+	not: GuestSpotFilter
+}
+
+input GuestSpotOrder {
+	asc: GuestSpotOrderable
+	desc: GuestSpotOrderable
+	then: GuestSpotOrder
+}
+
+input GuestSpotPatch {
+	recidency: ProfileRef
+	recident: ProfileRef
+	from: DateTime
+	to: DateTime
+	status: String
+}
+
+input GuestSpotRef {
+	recidency: ProfileRef
+	recident: ProfileRef
+	from: DateTime
+	to: DateTime
+	status: String
+}
+
+input ProfileFilter {
+	name: StringHashFilter
+	has: [ProfileHasFilter]
+	and: [ProfileFilter]
+	or: [ProfileFilter]
+	not: ProfileFilter
+}
+
+input ProfileOrder {
+	asc: ProfileOrderable
+	desc: ProfileOrderable
+	then: ProfileOrder
+}
+
+input ProfilePatch {
+	access_token: String
+	expires_in: Int64
+	fullname: String
+	bio: String
+	url: String
+	recidence: String
+}
+
+input ProfileRef {
+	name: String
+	access_token: String
+	expires_in: Int64
+	fullname: String
+	bio: String
+	url: String
+	recidence: String
+}
+
+input RecidencyFilter {
+	has: [RecidencyHasFilter]
+	and: [RecidencyFilter]
+	or: [RecidencyFilter]
+	not: RecidencyFilter
+}
+
+input RecidencyOrder {
+	asc: RecidencyOrderable
+	desc: RecidencyOrderable
+	then: RecidencyOrder
+}
+
+input RecidencyPatch {
+	recidency: ProfileRef
+	recident: ProfileRef
+	type: String
+	since: DateTime
+}
+
+input RecidencyRef {
+	recidency: ProfileRef
+	recident: ProfileRef
+	type: String
+	since: DateTime
+}
+
+input UpdateGuestSpotInput {
+	filter: GuestSpotFilter!
+	set: GuestSpotPatch
+	remove: GuestSpotPatch
+}
+
+input UpdateProfileInput {
+	filter: ProfileFilter!
+	set: ProfilePatch
+	remove: ProfilePatch
+}
+
+input UpdateRecidencyInput {
+	filter: RecidencyFilter!
+	set: RecidencyPatch
+	remove: RecidencyPatch
+}
+
+#######################
+# Generated Query
+#######################
+
+type Query {
+	getProfile(name: String!): Profile
+	queryProfile(filter: ProfileFilter, order: ProfileOrder, first: Int, offset: Int): [Profile]
+	aggregateProfile(filter: ProfileFilter): ProfileAggregateResult
+	queryRecidency(filter: RecidencyFilter, order: RecidencyOrder, first: Int, offset: Int): [Recidency]
+	aggregateRecidency(filter: RecidencyFilter): RecidencyAggregateResult
+	queryGuestSpot(filter: GuestSpotFilter, order: GuestSpotOrder, first: Int, offset: Int): [GuestSpot]
+	aggregateGuestSpot(filter: GuestSpotFilter): GuestSpotAggregateResult
+}
+
+#######################
+# Generated Mutations
+#######################
+
+type Mutation {
+	addProfile(input: [AddProfileInput!]!, upsert: Boolean): AddProfilePayload
+	updateProfile(input: UpdateProfileInput!): UpdateProfilePayload
+	deleteProfile(filter: ProfileFilter!): DeleteProfilePayload
+	addRecidency(input: [AddRecidencyInput!]!): AddRecidencyPayload
+	updateRecidency(input: UpdateRecidencyInput!): UpdateRecidencyPayload
+	deleteRecidency(filter: RecidencyFilter!): DeleteRecidencyPayload
+	addGuestSpot(input: [AddGuestSpotInput!]!): AddGuestSpotPayload
+	updateGuestSpot(input: UpdateGuestSpotInput!): UpdateGuestSpotPayload
+	deleteGuestSpot(filter: GuestSpotFilter!): DeleteGuestSpotPayload
+}
+
